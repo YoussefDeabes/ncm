@@ -1,4 +1,5 @@
 class AssPath {
+  static const splashAnimation = 'assets/images/splash_animation.gif';
   static const accordionActive = 'assets/images/accordion_active.png';
   static const accordionInactive = 'assets/images/accordion_inactive.png';
   static const backIcon = 'assets/images/back_icon.png';
