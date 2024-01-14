@@ -72,23 +72,19 @@ class _HomeScreenState extends BaseState<HomeScreen>
           showSelectedLabels: true,
           items: [
             getCustomBottomNavigationBarItem(
-              unSelectedImagePath: AssPath.dashboardActive,
-              imagePath: AssPath.dashboard,
+              icon: Icons.home_outlined,
               label: "Dashboard",
             ),
             getCustomBottomNavigationBarItem(
-              unSelectedImagePath: AssPath.serviceActive,
-              imagePath: AssPath.serviceActive,
+              icon: Icons.assignment_outlined,
               label: "Services",
             ),
             getCustomBottomNavigationBarItem(
-              unSelectedImagePath: AssPath.settingsInactive,
-              imagePath: AssPath.settingsInactive,
+              icon: Icons.settings,
               label: "Settings",
             ),
             getCustomBottomNavigationBarItem(
-              unSelectedImagePath: AssPath.more,
-              imagePath: AssPath.more,
+              icon: Icons.more_horiz_outlined,
               label: "More",
             ),
           ],
@@ -122,20 +118,19 @@ class _HomeScreenState extends BaseState<HomeScreen>
   }
 
   BottomNavigationBarItem getCustomBottomNavigationBarItem({
-    required String unSelectedImagePath,
-    required String imagePath,
+    required IconData icon,
     required String label,
   }) {
     return BottomNavigationBarItem(
-      icon: Image.asset(
-        unSelectedImagePath,
-        height: 35,
+      icon: Icon(
+        icon,
+        size: 30,
         color: ConstColors.textGrey,
       ),
       label: label,
-      activeIcon: Image.asset(
-        imagePath,
-        height: 35,
+      activeIcon: Icon(
+        icon,
+        size: 30,
         color: ConstColors.app,
       ),
     );
