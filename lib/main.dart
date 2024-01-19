@@ -12,6 +12,7 @@ import 'package:ncm/bloc/internet_connection_bloc/repository/check_connection_us
 import 'package:ncm/bloc/internet_connection_bloc/repository/network_info.dart';
 import 'package:ncm/bloc/lang/language_cubit.dart';
 import 'package:ncm/prefs/pref_manager.dart';
+import 'package:ncm/ui/screens/dashboard/bloc/dashboard_bloc.dart';
 import 'package:ncm/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:ncm/ui/screens/home/home_screen.dart';
 import 'package:ncm/ui/screens/login/bloc/login_bloc.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
                 loginRepository: LoginRepo(
                     authApiManager:
                         AuthApiManager(DioApiManager(PrefManager()))))),
+        BlocProvider(create: (BuildContext context) => DashboardBloc()),
       ],
       child: BlocBuilder<LanguageCubit, Locale>(
         builder: (context, localeState) {

@@ -17,16 +17,33 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
     on<ViewAllClickedEvt>(_onViewAllClicked);
   }
 
-  _onSearchClicked(SearchClickedEvt event, emit) {}
+  _onSearchClicked(SearchClickedEvt event, emit) {
+    emit(LoadingState());
+    emit(SearchState());
+  }
 
-  _onNotificationClicked(NotificationClickedEvt event, emit) {}
+  _onNotificationClicked(NotificationClickedEvt event, emit) {
+    emit(LoadingState());
+    emit(NotificationState());
+  }
 
-  _onClimateDataRequestClicked(ClimateDataRequestClickedEvt event, emit) {}
+  _onClimateDataRequestClicked(ClimateDataRequestClickedEvt event, emit) {
+    emit(LoadingState());
+    emit(ClimateDataRequestState());
+  }
 
-  _onRequestAWeatherReportClicked(
-      RequestAWeatherReportClickedEvt event, emit) {}
+  _onRequestAWeatherReportClicked(RequestAWeatherReportClickedEvt event, emit) {
+    emit(LoadingState());
+    emit(RequestAWeatherReportState());
+  }
 
-  _onFreeForecastReportClicked(FreeForecastReportClickedEvt event, emit) {}
+  _onFreeForecastReportClicked(FreeForecastReportClickedEvt event, emit) {
+    emit(LoadingState());
+    emit(FreeForecastReportState());
+  }
 
-  _onViewAllClicked(ViewAllClickedEvt event, emit) {}
+  _onViewAllClicked(ViewAllClickedEvt event, emit) {
+    emit(LoadingState());
+    emit(ViewAllState());
+  }
 }

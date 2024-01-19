@@ -16,3 +16,5 @@ class RequestAWeatherReportState extends DashboardState {}
 class FreeForecastReportState extends DashboardState {}
 
 class ViewAllState extends DashboardState {}
+
+class LoadingState extends DashboardState {}

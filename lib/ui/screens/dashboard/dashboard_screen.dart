@@ -1,8 +1,11 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ncm/_base/widgets/base_stateful_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ncm/res/assets_path.dart';
 import 'package:ncm/res/const_colors.dart';
+import 'package:ncm/ui/screens/dashboard/bloc/dashboard_bloc.dart';
 import 'package:ncm/util/lang/app_localization_keys.dart';
+import 'package:ncm/util/ui/feedback_controller.dart';
 
 class DashboardScreen extends BaseStatefulWidget {
   static const String routeName = '/dashboard-screen';
@@ -14,6 +17,14 @@ class DashboardScreen extends BaseStatefulWidget {
 }
 
 class _DashboardScreenState extends BaseState<DashboardScreen> {
+  late final DashboardBloc _dashboardBlock;
+
+  @override
+  void initState() {
+    _dashboardBlock = context.read<DashboardBloc>();
+    super.initState();
+  }
+
   @override
   Widget baseBuild(BuildContext context) {
     return Scaffold(
@@ -27,36 +38,65 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
 
   //Main body widget
   Widget _getBody() {
-    return Stack(
-      children: [
-        _getBackgroundImage(),
-        SingleChildScrollView(
-          child: Container(
-            height: height,
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: ListView(
-              children: [
-                _headerRow(),
-                _getTextWidget(translate(LangKeys.hi),
-                    color: ConstColors.appWhite,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700),
-                _getTextWidget("${translate(LangKeys.welcome)} User",
-                    color: ConstColors.appWhite,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500),
-                SizedBox(height: height / 80),
-                _getClimateDetailsCard(),
-                SizedBox(height: height / 40),
-                _servicesCountCards(),
-                SizedBox(height: height / 40),
-                _servicesTitleRow(),
-                _servicesList(),
-              ],
+    return BlocConsumer<DashboardBloc, DashboardState>(
+      listener: (context, state) {
+        if (state is LoadingState) {
+          showMessageLoading(translate(LangKeys.plzWait));
+        } else {
+          hideMessageLoading();
+        }
+        if (state is SearchState) {
+          showToast("Search clicked");
+        }
+        if (state is NotificationState) {
+          showToast("Notification clicked");
+        }
+        if (state is ClimateDataRequestState) {
+          showToast("Climate Data Request clicked");
+        }
+        if (state is RequestAWeatherReportState) {
+          showToast("Request a weather report clicked");
+        }
+        if (state is FreeForecastReportState) {
+          showToast("Free forecast report request clicked");
+        }
+        if (state is ViewAllState) {
+          showToast("View all clicked");
+        }
+      },
+      builder: (context, state) {
+        return Stack(
+          children: [
+            _getBackgroundImage(),
+            SingleChildScrollView(
+              child: Container(
+                height: height,
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: ListView(
+                  children: [
+                    _headerRow(),
+                    _getTextWidget(translate(LangKeys.hi),
+                        color: ConstColors.appWhite,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w700),
+                    _getTextWidget("${translate(LangKeys.welcome)} User",
+                        color: ConstColors.appWhite,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500),
+                    SizedBox(height: height / 80),
+                    _getClimateDetailsCard(),
+                    SizedBox(height: height / 40),
+                    _servicesCountCards(),
+                    SizedBox(height: height / 40),
+                    _servicesTitleRow(),
+                    _servicesList(),
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
-      ],
+          ],
+        );
+      },
     );
   }
 
@@ -80,14 +120,24 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
         ),
         Row(
           children: [
-            Image.asset(
-              AssPath.search,
-              scale: 1.2,
+            InkWell(
+              onTap: () {
+                _dashboardBlock.add(SearchClickedEvt());
+              },
+              child: Image.asset(
+                AssPath.search,
+                scale: 1.2,
+              ),
             ),
             const SizedBox(width: 20),
-            Image.asset(
-              AssPath.notificationIcon,
-              scale: 1.2,
+            InkWell(
+              onTap: () {
+                _dashboardBlock.add(NotificationClickedEvt());
+              },
+              child: Image.asset(
+                AssPath.notificationIcon,
+                scale: 1.2,
+              ),
             )
           ],
         ),
@@ -123,13 +173,9 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                     color: ConstColors.appWhite,
                     fontWeight: FontWeight.w700,
                     fontSize: 18),
-                SizedBox(height: height / 40),
-                Image.asset(
-                  AssPath.weatherIcon01,
-                  color: ConstColors.appWhite,
-                  scale: 0.3,
-                ),
-                const SizedBox(height: 10),
+                SizedBox(height: height / 50),
+                const Icon(Icons.wb_cloudy_outlined,
+                    size: 130, color: ConstColors.appWhite),
                 _getTextWidget("Partly Cloud", color: ConstColors.appWhite),
                 const SizedBox(height: 10),
                 _getTextWidget("27°",
@@ -326,7 +372,9 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
             fontWeight: FontWeight.w700,
             color: ConstColors.appWhite),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              _dashboardBlock.add(ViewAllClickedEvt());
+            },
             child: _getTextWidget(translate(LangKeys.viewAll),
                 fontSize: 12, color: ConstColors.appWhite)),
       ],
@@ -337,12 +385,18 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
   Widget _servicesList() {
     return Column(
       children: [
-        _serviceItem(translate(LangKeys.climateDataRequest),
-            AssPath.climateDataIconBig, () => null),
-        _serviceItem(translate(LangKeys.requestAWeatherReport),
-            AssPath.requestWeatherIcon, () => null),
-        _serviceItem(translate(LangKeys.freeForecastReportRequest),
-            AssPath.freeForcastIcon, () => null)
+        _serviceItem(
+            translate(LangKeys.climateDataRequest),
+            AssPath.climateDataIconBig,
+            () => _dashboardBlock.add(ClimateDataRequestClickedEvt())),
+        _serviceItem(
+            translate(LangKeys.requestAWeatherReport),
+            AssPath.requestWeatherIcon,
+            () => _dashboardBlock.add(RequestAWeatherReportClickedEvt())),
+        _serviceItem(
+            translate(LangKeys.freeForecastReportRequest),
+            AssPath.freeForcastIcon,
+            () => _dashboardBlock.add(FreeForecastReportClickedEvt()))
       ],
     );
   }
@@ -392,7 +446,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
       ],
     );
   }
-  
+
 ///////////////////////////////////////////////////////////
 //////////////////// Helper methods ///////////////////////
 ///////////////////////////////////////////////////////////
