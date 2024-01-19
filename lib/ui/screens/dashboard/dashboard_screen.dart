@@ -25,6 +25,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
 //////////////////// Widget methods ///////////////////////
 ///////////////////////////////////////////////////////////
 
+  //Main body widget
   Widget _getBody() {
     return Stack(
       children: [
@@ -46,288 +47,11 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                     fontWeight: FontWeight.w500),
                 SizedBox(height: height / 80),
                 _getClimateDetailsCard(),
-                SizedBox(
-                  height: height / 40,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(15)),
-                      child: Stack(
-                        children: [
-                          SizedBox(
-                            width: width / 3.6,
-                            height: height / 6,
-                            child: Image.asset(
-                              AssPath.stats01,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Column(
-                            children: [
-                              SizedBox(
-                                height: height / 50,
-                              ),
-                              Text(
-                                "53",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 50,
-                                    color: ConstColors.appWhite),
-                              ),
-                              SizedBox(
-                                height: height / 50,
-                              ),
-                              Container(
-                                width: width / 5,
-                                margin: EdgeInsets.symmetric(
-                                    horizontal: width / 50),
-                                child: Text(
-                                  "Service Applied",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: ConstColors.appWhite),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(15)),
-                      child: Stack(
-                        children: [
-                          SizedBox(
-                            width: width / 3.6,
-                            height: height / 6,
-                            child: Image.asset(
-                              AssPath.stats02,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Column(
-                            children: [
-                              SizedBox(
-                                height: height / 50,
-                              ),
-                              Text(
-                                "33",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 50,
-                                    color: ConstColors.appWhite),
-                              ),
-                              SizedBox(
-                                height: height / 50,
-                              ),
-                              Container(
-                                width: width / 5,
-                                margin: EdgeInsets.symmetric(
-                                    horizontal: width / 50),
-                                child: Text(
-                                  "Service Approved",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: ConstColors.appWhite),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    ClipRRect(
-                      borderRadius: const BorderRadius.all(Radius.circular(15)),
-                      child: Stack(
-                        children: [
-                          SizedBox(
-                            width: width / 3.6,
-                            height: height / 6,
-                            child: Image.asset(
-                              AssPath.stats03,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Column(
-                            children: [
-                              SizedBox(
-                                height: height / 50,
-                              ),
-                              Text(
-                                "20",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 50,
-                                    color: ConstColors.appWhite),
-                              ),
-                              SizedBox(
-                                height: height / 50,
-                              ),
-                              Container(
-                                width: width / 5,
-                                margin: EdgeInsets.symmetric(
-                                    horizontal: width / 50),
-                                child: Text(
-                                  "Service Rejected",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: ConstColors.appWhite),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: height / 40,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Services",
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: ConstColors.appWhite),
-                    ),
-                    TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          "View All",
-                          style: TextStyle(
-                              fontSize: 12, color: ConstColors.appWhite),
-                        )),
-                  ],
-                ),
-                Column(
-                  children: [
-                    InkWell(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Container(
-                          color: ConstColors.appWhite.withOpacity(0.2),
-                          height: height / 7,
-                          width: width,
-                          child: Row(
-                            children: [
-                              SizedBox(width: width / 20),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Container(
-                                    height: height / 10,
-                                    color: ConstColors.appWhite,
-                                    child: Image.asset(
-                                      AssPath.climateDataIconBig,
-                                      fit: BoxFit.cover,
-                                    )),
-                              ),
-                              SizedBox(width: width / 20),
-                              Container(
-                                width: width / 3,
-                                child: Text(
-                                  "Climate data request",
-                                  style: TextStyle(
-                                    color: ConstColors.appWhite,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
-                    SizedBox(
-                      height: height / 40,
-                    ),
-                    InkWell(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Container(
-                          color: ConstColors.appWhite.withOpacity(0.2),
-                          height: height / 7,
-                          width: width,
-                          child: Row(
-                            children: [
-                              SizedBox(width: width / 20),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Container(
-                                    height: height / 10,
-                                    color: ConstColors.appWhite,
-                                    child: Image.asset(
-                                        AssPath.requestWeatherIcon)),
-                              ),
-                              SizedBox(width: width / 20),
-                              Container(
-                                width: width / 3,
-                                child: Text(
-                                  "Climate data request",
-                                  style: TextStyle(
-                                    color: ConstColors.appWhite,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
-                    SizedBox(
-                      height: height / 40,
-                    ),
-                    InkWell(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        child: Container(
-                          color: ConstColors.appWhite.withOpacity(0.2),
-                          height: height / 7,
-                          width: width,
-                          child: Row(
-                            children: [
-                              SizedBox(width: width / 20),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
-                                child: Container(
-                                    height: height / 10,
-                                    color: ConstColors.appWhite,
-                                    child:
-                                        Image.asset(AssPath.freeForcastIcon)),
-                              ),
-                              SizedBox(width: width / 20),
-                              Container(
-                                width: width / 3,
-                                child: Text(
-                                  "Climate data request",
-                                  style: TextStyle(
-                                    color: ConstColors.appWhite,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      onTap: () {},
-                    ),
-                    SizedBox(
-                      height: height / 40,
-                    ),
-                  ],
-                ),
+                SizedBox(height: height / 40),
+                _servicesCountCards(),
+                SizedBox(height: height / 40),
+                _servicesTitleRow(),
+                _servicesList(),
               ],
             ),
           ),
@@ -381,6 +105,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
     );
   }
 
+  //Current forecast details card
   Widget _getClimateDetailsCard() {
     return Center(
       child: ClipRRect(
@@ -421,6 +146,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
     );
   }
 
+  //upcoming week forecast horizontal list
   Widget _upcomingClimateDetailsList() {
     return Container(
       alignment: AlignmentDirectional.center,
@@ -528,6 +254,145 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
       ),
     );
   }
+
+  //Services counts cards
+  Widget _servicesCountCards() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        _servicesCountCardItem(
+            "53", translate(LangKeys.serviceApplied), AssPath.stats01),
+        _servicesCountCardItem(
+            "33", translate(LangKeys.serviceApproved), AssPath.stats02),
+        _servicesCountCardItem(
+            "20", translate(LangKeys.serviceRejected), AssPath.stats03),
+      ],
+    );
+  }
+
+  //Services count card image
+  Widget _servicesCountCardImage(String image) {
+    return SizedBox(
+      width: width / 3.6,
+      height: height / 6,
+      child: Image.asset(
+        image,
+        fit: BoxFit.fill,
+      ),
+    );
+  }
+
+  //Services count card item
+  Widget _servicesCountCardItem(String count, String service, String image) {
+    return ClipRRect(
+      borderRadius: const BorderRadius.all(Radius.circular(15)),
+      child: Stack(
+        children: [
+          _servicesCountCardImage(image),
+          Column(
+            children: [
+              SizedBox(
+                height: height / 50,
+              ),
+              _getTextWidget(count,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 50,
+                  color: ConstColors.appWhite),
+              SizedBox(
+                height: height / 50,
+              ),
+              Container(
+                width: width / 5,
+                margin: EdgeInsets.symmetric(horizontal: width / 50),
+                child: _getTextWidget(service,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 14,
+                    color: ConstColors.appWhite),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  //Services row
+  Widget _servicesTitleRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        _getTextWidget(translate(LangKeys.services),
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: ConstColors.appWhite),
+        TextButton(
+            onPressed: () {},
+            child: _getTextWidget(translate(LangKeys.viewAll),
+                fontSize: 12, color: ConstColors.appWhite)),
+      ],
+    );
+  }
+
+  //Services List
+  Widget _servicesList() {
+    return Column(
+      children: [
+        _serviceItem(translate(LangKeys.climateDataRequest),
+            AssPath.climateDataIconBig, () => null),
+        _serviceItem(translate(LangKeys.requestAWeatherReport),
+            AssPath.requestWeatherIcon, () => null),
+        _serviceItem(translate(LangKeys.freeForecastReportRequest),
+            AssPath.freeForcastIcon, () => null)
+      ],
+    );
+  }
+
+  //Service item
+  Widget _serviceItem(String title, String image, Function() onPressed) {
+    return Column(
+      children: [
+        InkWell(
+          onTap: onPressed,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: Container(
+              color: ConstColors.appWhite.withOpacity(0.2),
+              height: height / 7,
+              width: width,
+              child: Row(
+                children: [
+                  SizedBox(width: width / 20),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Container(
+                        height: height / 10,
+                        color: ConstColors.appWhite,
+                        child: Image.asset(
+                          image,
+                          fit: BoxFit.cover,
+                        )),
+                  ),
+                  SizedBox(width: width / 20),
+                  SizedBox(
+                    width: width / 3,
+                    child: _getTextWidget(
+                      title,
+                      color: ConstColors.appWhite,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: height / 40,
+        ),
+      ],
+    );
+  }
+  
 ///////////////////////////////////////////////////////////
 //////////////////// Helper methods ///////////////////////
 ///////////////////////////////////////////////////////////
