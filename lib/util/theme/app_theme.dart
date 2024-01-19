@@ -9,7 +9,7 @@ class AppTheme {
   ThemeData get themeDataLight {
     return ThemeData(
         primarySwatch: ConstColors.primarySwatch,
-        fontFamily: "AdelleSans",
+        // fontFamily: "AdelleSans",
         useMaterial3: false,
         scaffoldBackgroundColor: ConstColors.scaffoldBackground);
   }

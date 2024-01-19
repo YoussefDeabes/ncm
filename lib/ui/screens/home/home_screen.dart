@@ -39,6 +39,7 @@ class _HomeScreenState extends BaseState<HomeScreen>
   Widget baseBuild(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: _getBottomNavigation(),
+      extendBody: true,
       body: _getBody(),
     );
   }
@@ -50,18 +51,10 @@ class _HomeScreenState extends BaseState<HomeScreen>
   /// Bottom navigation items
   Widget _getBottomNavigation() {
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-            topRight: Radius.circular(30), topLeft: Radius.circular(30)),
-        boxShadow: [
-          BoxShadow(
-              color: ConstColors.disabled, spreadRadius: 0, blurRadius: 15),
-        ],
-      ),
       child: ClipRRect(
         borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(45.0),
-          topRight: Radius.circular(45.0),
+          topLeft: Radius.circular(40.0),
+          topRight: Radius.circular(40.0),
         ),
         child: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
