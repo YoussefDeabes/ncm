@@ -51,6 +51,7 @@ dependencies:
 
   #Storage
   shared_preferences: ^2.1.2
+  sqflite: ^2.3.0
 
   #Services
   path_provider: ^2.0.15

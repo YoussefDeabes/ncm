@@ -53,6 +53,7 @@ class LangKeys {
   static const signatureDigital = 'authReferenceNumber';
   static const uploadDocument = 'uploadDocument';
   static const applicantDetails = 'applicantDetails';
+  static const stationAddress = 'stationAddress';
   static const nationalAddress = 'nationalAddress';
   static const contactDetails = 'contactDetails';
   static const termsAndConditions = 'termsAndConditions';

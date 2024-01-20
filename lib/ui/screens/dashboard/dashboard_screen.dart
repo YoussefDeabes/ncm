@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ncm/res/assets_path.dart';
 import 'package:ncm/res/const_colors.dart';
 import 'package:ncm/ui/screens/dashboard/bloc/dashboard_bloc.dart';
+import 'package:ncm/ui/widgets/widgets.dart';
 import 'package:ncm/util/lang/app_localization_keys.dart';
 import 'package:ncm/util/ui/feedback_controller.dart';
 
@@ -67,7 +68,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
       builder: (context, state) {
         return Stack(
           children: [
-            _getBackgroundImage(),
+            getBackgroundImage(width:width,height:height),
             SingleChildScrollView(
               child: Container(
                 height: height,
@@ -75,11 +76,11 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                 child: ListView(
                   children: [
                     _headerRow(),
-                    _getTextWidget(translate(LangKeys.hi),
+                    getTextWidget(translate(LangKeys.hi),
                         color: ConstColors.appWhite,
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
-                    _getTextWidget("${translate(LangKeys.welcome)} User",
+                    getTextWidget("${translate(LangKeys.welcome)} User",
                         color: ConstColors.appWhite,
                         fontSize: 18,
                         fontWeight: FontWeight.w500),
@@ -97,16 +98,6 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
           ],
         );
       },
-    );
-  }
-
-  //Main background image
-  Widget _getBackgroundImage() {
-    return Image.asset(
-      AssPath.mainBg,
-      width: width,
-      height: height,
-      fit: BoxFit.cover,
     );
   }
 
@@ -145,16 +136,6 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
     );
   }
 
-  //Get any text with optional params
-  Widget _getTextWidget(String text,
-      {Color? color, double? fontSize, FontWeight? fontWeight}) {
-    return Text(
-      text,
-      style:
-          TextStyle(color: color, fontSize: fontSize, fontWeight: fontWeight),
-    );
-  }
-
   //Current forecast details card
   Widget _getClimateDetailsCard() {
     return Center(
@@ -168,17 +149,17 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
           child: Center(
             child: Column(
               children: [
-                _getTextWidget("Wed, August 06", color: ConstColors.appWhite),
-                _getTextWidget("Riyadh, Saudi Arabia",
+                getTextWidget("Wed, August 06", color: ConstColors.appWhite),
+                getTextWidget("Riyadh, Saudi Arabia",
                     color: ConstColors.appWhite,
                     fontWeight: FontWeight.w700,
                     fontSize: 18),
                 SizedBox(height: height / 50),
                 const Icon(Icons.wb_cloudy_outlined,
                     size: 130, color: ConstColors.appWhite),
-                _getTextWidget("Partly Cloud", color: ConstColors.appWhite),
+                getTextWidget("Partly Cloud", color: ConstColors.appWhite),
                 const SizedBox(height: 10),
-                _getTextWidget("27°",
+                getTextWidget("27°",
                     color: ConstColors.appWhite,
                     fontWeight: FontWeight.w500,
                     fontSize: 50),
@@ -208,7 +189,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                 AssPath.weatherIcon02,
               ),
               SizedBox(height: height / 50),
-              _getTextWidget(translate(LangKeys.thu),
+              getTextWidget(translate(LangKeys.thu),
                   color: ConstColors.appWhite,
                   fontWeight: FontWeight.w500,
                   fontSize: 14)
@@ -221,7 +202,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                 AssPath.weatherIcon02,
               ),
               SizedBox(height: height / 50),
-              _getTextWidget(translate(LangKeys.fri),
+              getTextWidget(translate(LangKeys.fri),
                   color: ConstColors.appWhite,
                   fontWeight: FontWeight.w500,
                   fontSize: 14)
@@ -235,7 +216,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                 scale: 1.5,
               ),
               SizedBox(height: height / 50),
-              _getTextWidget(translate(LangKeys.sat),
+              getTextWidget(translate(LangKeys.sat),
                   color: ConstColors.appWhite,
                   fontWeight: FontWeight.w500,
                   fontSize: 14)
@@ -248,7 +229,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                 AssPath.weatherIcon02,
               ),
               SizedBox(height: height / 45),
-              _getTextWidget(translate(LangKeys.sun),
+              getTextWidget(translate(LangKeys.sun),
                   color: ConstColors.appWhite,
                   fontWeight: FontWeight.w500,
                   fontSize: 14)
@@ -262,7 +243,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                 scale: 1.7,
               ),
               SizedBox(height: height / 50),
-              _getTextWidget(translate(LangKeys.mon),
+              getTextWidget(translate(LangKeys.mon),
                   color: ConstColors.appWhite,
                   fontWeight: FontWeight.w500,
                   fontSize: 14)
@@ -276,7 +257,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                 scale: 1.5,
               ),
               SizedBox(height: height / 55),
-              _getTextWidget(translate(LangKeys.fri),
+              getTextWidget(translate(LangKeys.fri),
                   color: ConstColors.appWhite,
                   fontWeight: FontWeight.w500,
                   fontSize: 14)
@@ -290,7 +271,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                 scale: 1.5,
               ),
               SizedBox(height: height / 55),
-              _getTextWidget(translate(LangKeys.sat),
+              getTextWidget(translate(LangKeys.sat),
                   color: ConstColors.appWhite,
                   fontWeight: FontWeight.w500,
                   fontSize: 14)
@@ -340,7 +321,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
               SizedBox(
                 height: height / 50,
               ),
-              _getTextWidget(count,
+              getTextWidget(count,
                   fontWeight: FontWeight.w500,
                   fontSize: 50,
                   color: ConstColors.appWhite),
@@ -350,7 +331,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
               Container(
                 width: width / 5,
                 margin: EdgeInsets.symmetric(horizontal: width / 50),
-                child: _getTextWidget(service,
+                child: getTextWidget(service,
                     fontWeight: FontWeight.w500,
                     fontSize: 14,
                     color: ConstColors.appWhite),
@@ -367,7 +348,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _getTextWidget(translate(LangKeys.services),
+        getTextWidget(translate(LangKeys.services),
             fontSize: 20,
             fontWeight: FontWeight.w700,
             color: ConstColors.appWhite),
@@ -375,7 +356,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
             onPressed: () {
               _dashboardBlock.add(ViewAllClickedEvt());
             },
-            child: _getTextWidget(translate(LangKeys.viewAll),
+            child: getTextWidget(translate(LangKeys.viewAll),
                 fontSize: 12, color: ConstColors.appWhite)),
       ],
     );
@@ -429,7 +410,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                   SizedBox(width: width / 20),
                   SizedBox(
                     width: width / 3,
-                    child: _getTextWidget(
+                    child: getTextWidget(
                       title,
                       color: ConstColors.appWhite,
                       fontWeight: FontWeight.w600,

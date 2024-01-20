@@ -19,6 +19,7 @@ import 'package:ncm/ui/screens/login/bloc/login_bloc.dart';
 import 'package:ncm/ui/screens/login/bloc/login_repo.dart';
 import 'package:ncm/ui/screens/login/login_screen.dart';
 import 'package:ncm/ui/screens/more/more_screen.dart';
+import 'package:ncm/ui/screens/services/bloc/services_bloc.dart';
 import 'package:ncm/ui/screens/services/services_screen.dart';
 import 'package:ncm/ui/screens/settings/settings_screen.dart';
 import 'package:ncm/ui/screens/splash/splash_screen.dart';
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
                     authApiManager:
                         AuthApiManager(DioApiManager(PrefManager()))))),
         BlocProvider(create: (BuildContext context) => DashboardBloc()),
+        BlocProvider(create: (BuildContext context) => ServicesBloc()),
       ],
       child: BlocBuilder<LanguageCubit, Locale>(
         builder: (context, localeState) {

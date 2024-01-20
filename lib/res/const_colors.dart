@@ -6,7 +6,7 @@ class ConstColors {
   static final MaterialColor primarySwatch = generateMaterialColors(app);
 
   static const app = Color(0xff204766);
-  static const secondary = Color(0xff259ed9);
+  static const secondary = Color(0xff4481c1);
   static const accentColor = Color(0xffff9b83);
 
   static const _appBlack = Colors.black;
