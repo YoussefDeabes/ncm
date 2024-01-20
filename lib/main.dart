@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:country_picker/country_picker.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,7 @@ import 'package:ncm/bloc/internet_connection_bloc/internet_connection_bloc.dart'
 import 'package:ncm/bloc/internet_connection_bloc/repository/check_connection_using_url.dart';
 import 'package:ncm/bloc/internet_connection_bloc/repository/network_info.dart';
 import 'package:ncm/bloc/lang/language_cubit.dart';
+import 'package:ncm/firebase_options.dart';
 import 'package:ncm/prefs/pref_manager.dart';
 import 'package:ncm/ui/screens/dashboard/bloc/dashboard_bloc.dart';
 import 'package:ncm/ui/screens/dashboard/dashboard_screen.dart';
@@ -29,6 +31,9 @@ import 'package:path_provider/path_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
         ? HydratedStorage.webStorageDirectory

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "790272638584",
+    "project_id": "ncm-flutter",
+    "storage_bucket": "ncm-flutter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790272638584:android:e5bfac9f4bdf465699f78d",
+        "android_client_info": {
+          "package_name": "com.example.ncm.ncm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-ckcCb0qFRNnj02gU23GTNmtU6F6SBXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

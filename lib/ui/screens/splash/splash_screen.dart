@@ -63,12 +63,12 @@ class _SplashScreenState extends BaseState<SplashScreen> {
 
   Future _goToNextScreen() async {
     bool isLoggedIn = await PrefManager.isLoggedIn();
-    Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
-    // if(isLoggedIn){
-    //   Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
-    // }else {
-    //   Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
-    // }
+    // Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+    if(isLoggedIn){
+      Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
+    }else {
+      Navigator.of(context).pushReplacementNamed(LoginScreen.routeName);
+    }
 
   }
 }
