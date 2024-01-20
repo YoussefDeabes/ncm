@@ -3,6 +3,7 @@ import 'package:ncm/_base/widgets/base_stateful_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ncm/res/assets_path.dart';
 import 'package:ncm/res/const_colors.dart';
+import 'package:ncm/ui/screens/home/home_screen.dart';
 import 'package:ncm/ui/screens/login/bloc/login_bloc.dart';
 import 'package:ncm/ui/widgets/widgets.dart';
 
@@ -185,6 +186,7 @@ class _LoginScreenState extends BaseState<LoginScreen> {
   LoginBloc get loginBloc => BlocProvider.of<LoginBloc>(context);
 
   void _onLoginPressed() {
+    Navigator.of(context).pushNamed(HomeScreen.routeName);
     if (!_formKey.currentState!.validate()) {
       return;
     }
