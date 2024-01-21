@@ -28,6 +28,7 @@ class _ServicesScreenState extends BaseState<ServicesScreen> {
   bool listOfWeatherStationChecked = false;
   bool ownershipChecked = false;
   bool rentChecked = false;
+  bool expanded = false;
 
   @override
   void initState() {
@@ -142,6 +143,11 @@ class _ServicesScreenState extends BaseState<ServicesScreen> {
                     // controller: _expansionTileController,
                     title: getTextWidget(translate(LangKeys.stationDetails),
                         fontWeight: FontWeight.w500),
+                    onExpansionChanged: (val) {
+                      setState(() {
+                        expanded = !expanded;
+                      });
+                    },
                     trailing: ClipRRect(
                       borderRadius: BorderRadius.circular(height),
                       child: Container(
@@ -150,7 +156,7 @@ class _ServicesScreenState extends BaseState<ServicesScreen> {
                           alignment: AlignmentDirectional.center,
                           width: 40,
                           height: 40,
-                          child: getTextWidget("+",
+                          child: getTextWidget(expanded ? "-" : "+",
                               fontSize: 30, color: ConstColors.app)),
                     ),
                     children: [
@@ -567,9 +573,9 @@ class _ServicesScreenState extends BaseState<ServicesScreen> {
                   isScrollControlled: true,
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(16),
-                        topLeft: Radius.circular(16),
-                      )),
+                    topRight: Radius.circular(16),
+                    topLeft: Radius.circular(16),
+                  )),
                   builder: (context) {
                     return SizedBox(
                       height: height * 0.70,
@@ -579,14 +585,14 @@ class _ServicesScreenState extends BaseState<ServicesScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const SizedBox(height: 20),
-                             Text(
-                                translate(LangKeys.termsAndConditions),
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: ConstColors.app),
-                              ),
+                            Text(
+                              translate(LangKeys.termsAndConditions),
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: ConstColors.app),
+                            ),
                             const SizedBox(height: 20),
                             const Padding(
                               padding: EdgeInsets.all(20.0),
@@ -594,8 +600,7 @@ class _ServicesScreenState extends BaseState<ServicesScreen> {
                                 ConstValues.terms,
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
-                                    fontSize: 14,
-                                    color: ConstColors.app),
+                                    fontSize: 14, color: ConstColors.app),
                               ),
                             ),
                           ],
