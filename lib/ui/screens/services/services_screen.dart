@@ -3,6 +3,7 @@ import 'package:ncm/_base/widgets/base_stateful_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:ncm/res/assets_path.dart';
 import 'package:ncm/res/const_colors.dart';
+import 'package:ncm/res/const_values.dart';
 import 'package:ncm/ui/screens/services/bloc/services_bloc.dart';
 import 'package:ncm/ui/widgets/widgets.dart';
 import 'package:ncm/util/lang/app_localization_keys.dart';
@@ -558,9 +559,54 @@ class _ServicesScreenState extends BaseState<ServicesScreen> {
           ),
         ),
         SizedBox(height: height / 50),
-        getTextWidget(translate(LangKeys.termsAndConditions),
-            fontSize: 14, fontWeight: FontWeight.w500),
-        SizedBox(height: height / 50),
+        TextButton(
+            onPressed: () {
+              showModalBottomSheet(
+                  context: context,
+                  isDismissible: true,
+                  isScrollControlled: true,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(16),
+                        topLeft: Radius.circular(16),
+                      )),
+                  builder: (context) {
+                    return Container(
+                      height: height * 0.70,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(height: 20),
+                             Text(
+                                translate(LangKeys.termsAndConditions),
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                    color: ConstColors.app),
+                              ),
+                            SizedBox(height: 20),
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Text(
+                                ConstValues.terms,
+                                textAlign: TextAlign.justify,
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: ConstColors.app),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  });
+            },
+            child: getTextWidget(translate(LangKeys.termsAndConditions),
+                fontSize: 14, fontWeight: FontWeight.w500)),
+        SizedBox(height: height / 80),
         SizedBox(
             width: width,
             height: 50,
