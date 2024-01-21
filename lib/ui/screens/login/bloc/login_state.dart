@@ -11,6 +11,14 @@ class LoadingLoginState extends LoginState {
   const LoadingLoginState();
 }
 
+class LoginClickedState extends LoginState {
+  const LoginClickedState();
+}
+
+class FailedLoginState extends LoginState {
+  String errorMessage;
+   FailedLoginState(this.errorMessage);
+}
 class NetworkError extends LoginState {
   final String message;
 
@@ -58,4 +66,12 @@ class PasswordFormatCorrect extends LoginState {}
 /// success login --> will open home screen
 class SuccessLogin extends LoginState {
   const SuccessLogin();
+}
+
+class ForgetPasswordState extends LoginState {
+  const ForgetPasswordState();
+}
+
+class RegisterState extends LoginState {
+  const RegisterState();
 }

@@ -57,5 +57,13 @@
   "nationalAddress": "العنوان الوطني",
   "contactDetails": "بيانات المتصل",
   "termsAndConditions": "الشروط والأحكام",
-  "submit": "ارسال"
+  "submit": "ارسال",
+  "login": "تسجيل دخول",
+  "username": "اسم المستخدم",
+  "password": "رمز الدخول",
+  "forgetPassword": "نسيت رمز الدخول",
+  "notAMember": "مستخدم جديد؟",
+  "register": "سجل",
+  "enterEmail": "الرجاء ادخال البريد الاكتروني",
+  "enterPassword": "الرجاء ادخال رمز المرور"
 }

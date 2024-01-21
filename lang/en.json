@@ -57,5 +57,13 @@
   "nationalAddress": "National Address",
   "contactDetails": "Contact details",
   "termsAndConditions": "Terms & Conditions",
-  "submit": "Submit"
+  "submit": "Submit",
+  "login": "Login",
+  "username": "Username",
+  "password": "Password",
+  "forgetPassword": "Forget password? ",
+  "notAMember": "Not a member",
+  "register": "Register",
+  "enterEmail": "Kindly, enter your email",
+  "enterPassword": "Kindly, enter your password"
 }

@@ -58,4 +58,12 @@ class LangKeys {
   static const contactDetails = 'contactDetails';
   static const termsAndConditions = 'termsAndConditions';
   static const submit = 'submit';
+  static const login = 'login';
+  static const username = 'username';
+  static const password = 'password';
+  static const forgetPassword = 'forgetPassword';
+  static const notAMember = 'notAMember';
+  static const register = 'register';
+  static const enterEmail = 'enterEmail';
+  static const enterPassword = 'enterPassword';
 }

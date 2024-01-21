@@ -39,7 +39,7 @@ dependencies:
   hydrated_bloc: ^9.1.2
 
   #Network
-  dio: ^4.0.6
+  dio: ^5.4.0
   connectivity_plus: ^5.0.2
 
   #UI
@@ -64,6 +64,7 @@ dependencies:
   #Firebase
   firebase_core: ^2.24.2
   firebase_core_platform_interface: ^5.0.0
+  firebase_auth: ^4.16.0
 
 
   # The following adds the Cupertino Icons font to your application.

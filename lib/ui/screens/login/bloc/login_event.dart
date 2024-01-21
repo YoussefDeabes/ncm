@@ -8,6 +8,10 @@ abstract class LoginEvent {
 /// fire this event when the user clicked on the login button
 class LoginApiEvent extends LoginEvent {}
 
+class ForgetPasswordEvent extends LoginEvent {}
+
+class RegisterEvent extends LoginEvent {}
+
 // fire this event when email field has change to validate
 class ValidateEmailEvent extends LoginEvent {
   final String username;
@@ -22,24 +26,10 @@ class ValidatePasswordEvent extends LoginEvent {
   const ValidatePasswordEvent(this.password);
 }
 
-/// fire this event when the user try to move to another page
-class CheckStepEvent extends LoginEvent {
-  final int comingStepNumber;
-  final int currentStepNumber;
+class FailedLoginEvent extends LoginEvent {
+  String errorMessage;
 
-  const CheckStepEvent({
-    required this.comingStepNumber,
-    required this.currentStepNumber,
-  });
+  FailedLoginEvent(this.errorMessage);
 }
 
-/// fire this event only when the user moves to different page
-class ChangeStepEvent extends LoginEvent {
-  // final int comingStepNumber;
-  final int currentStepNumber;
-
-  const ChangeStepEvent({
-    // required this.comingStepNumber,
-    required this.currentStepNumber,
-  });
-}
+class SuccessLoginEvent extends LoginEvent {}

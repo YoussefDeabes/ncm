@@ -13,30 +13,30 @@ class ErrorApiModel {
     required this.code,
   });
 
-  factory ErrorApiModel.fromDioError(DioError dioError) {
+  factory ErrorApiModel.fromDioError(DioException dioError) {
     late int codeError;
     switch (dioError.type) {
-      case DioErrorType.cancel:
+      case DioExceptionType.cancel:
         codeError = 1001;
         break;
-      case DioErrorType.connectTimeout:
+      case DioExceptionType.connectionTimeout:
         codeError = 1002;
         break;
-      case DioErrorType.receiveTimeout:
+      case DioExceptionType.receiveTimeout:
         codeError = 1003;
         break;
-      case DioErrorType.response:
+      case DioExceptionType.badResponse:
       // use code from 1004 - 1010
         codeError = ErrorApiHelper.handleResponseErrorCode(
           dioError.response?.statusCode,
         );
         break;
-      case DioErrorType.sendTimeout:
+      case DioExceptionType.sendTimeout:
         codeError = 1011;
 
         break;
-      case DioErrorType.other:
-        if (dioError.message.contains("SocketException")) {
+      case DioExceptionType.unknown:
+        if (dioError.message.toString().contains("SocketException")) {
           codeError = 1012;
           break;
         }
