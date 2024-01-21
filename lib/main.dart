@@ -25,6 +25,7 @@ import 'package:ncm/ui/screens/services/bloc/services_bloc.dart';
 import 'package:ncm/ui/screens/services/services_screen.dart';
 import 'package:ncm/ui/screens/settings/settings_screen.dart';
 import 'package:ncm/ui/screens/splash/splash_screen.dart';
+import 'package:ncm/util/lang/app_language.dart';
 import 'package:ncm/util/lang/app_localization.dart';
 import 'package:ncm/util/theme/app_theme.dart';
 import 'package:path_provider/path_provider.dart';
@@ -40,11 +41,13 @@ void main() async {
         ? HydratedStorage.webStorageDirectory
         : await getTemporaryDirectory(),
   );
-  runApp(const MyApp());
+  AppLanguage appLanguage = AppLanguage();
+  await appLanguage.fetchLocale();
+  runApp(const NCM());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class NCM extends StatelessWidget {
+  const NCM({super.key});
 
   // This widget is the root of your application.
   @override
@@ -84,7 +87,6 @@ class MyApp extends StatelessWidget {
                 Locale(codeEn, countryUs),
                 Locale(codeAr, countryEg)
               ],
-
               /// these delegates make sure that the localization data for the proper
               /// language is loaded ...
               localizationsDelegates: const [

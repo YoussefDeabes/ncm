@@ -65,5 +65,7 @@
   "notAMember": "مستخدم جديد؟",
   "register": "سجل",
   "enterEmail": "الرجاء ادخال البريد الاكتروني",
-  "enterPassword": "الرجاء ادخال رمز المرور"
+  "enterPassword": "الرجاء ادخال رمز المرور",
+  "changeLanguage": "تغيير اللغة",
+  "logout": "تسجيل خروج"
 }

@@ -5,6 +5,7 @@ import 'package:ncm/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:ncm/ui/screens/more/more_screen.dart';
 import 'package:ncm/ui/screens/services/services_screen.dart';
 import 'package:ncm/ui/screens/settings/settings_screen.dart';
+import 'package:ncm/util/lang/app_localization_keys.dart';
 import 'package:ncm/util/ui/screen_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -66,19 +67,19 @@ class _HomeScreenState extends BaseState<HomeScreen>
           items: [
             getCustomBottomNavigationBarItem(
               icon: Icons.home_outlined,
-              label: "Dashboard",
+              label: translate(LangKeys.dashboard),
             ),
             getCustomBottomNavigationBarItem(
               icon: Icons.assignment_outlined,
-              label: "Services",
+              label: translate(LangKeys.services),
             ),
             getCustomBottomNavigationBarItem(
               icon: Icons.settings,
-              label: "Settings",
+              label: translate(LangKeys.settings),
             ),
             getCustomBottomNavigationBarItem(
               icon: Icons.more_horiz_outlined,
-              label: "More",
+              label: translate(LangKeys.more),
             ),
           ],
         ),

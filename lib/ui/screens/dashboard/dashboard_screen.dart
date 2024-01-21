@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:ncm/_base/widgets/base_stateful_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:ncm/prefs/pref_manager.dart';
 import 'package:ncm/res/assets_path.dart';
 import 'package:ncm/res/const_colors.dart';
 import 'package:ncm/ui/screens/dashboard/bloc/dashboard_bloc.dart';
@@ -68,7 +70,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
       builder: (context, state) {
         return Stack(
           children: [
-            getBackgroundImage(width:width,height:height),
+            getBackgroundImage(width: width, height: height),
             SingleChildScrollView(
               child: Container(
                 height: height,
@@ -80,10 +82,16 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
                         color: ConstColors.appWhite,
                         fontSize: 20,
                         fontWeight: FontWeight.w700),
-                    getTextWidget("${translate(LangKeys.welcome)} User",
-                        color: ConstColors.appWhite,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+                    FutureBuilder(
+                      builder: (context, snapshot) {
+                        return getTextWidget(
+                            "${translate(LangKeys.welcome)} ${snapshot.data}",
+                            color: ConstColors.appWhite,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500);
+                      },
+                      future: PrefManager.getUsername(),
+                    ),
                     SizedBox(height: height / 80),
                     _getClimateDetailsCard(),
                     SizedBox(height: height / 40),
@@ -149,7 +157,7 @@ class _DashboardScreenState extends BaseState<DashboardScreen> {
           child: Center(
             child: Column(
               children: [
-                getTextWidget("Wed, August 06", color: ConstColors.appWhite),
+                getTextWidget(DateFormat('EEEE, MMMM dd').format(DateTime.now().toLocal()), color: ConstColors.appWhite),
                 getTextWidget("Riyadh, Saudi Arabia",
                     color: ConstColors.appWhite,
                     fontWeight: FontWeight.w700,

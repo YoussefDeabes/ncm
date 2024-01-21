@@ -65,7 +65,8 @@ class PasswordFormatCorrect extends LoginState {}
 
 /// success login --> will open home screen
 class SuccessLogin extends LoginState {
-  const SuccessLogin();
+  User user;
+   SuccessLogin(this.user);
 }
 
 class ForgetPasswordState extends LoginState {

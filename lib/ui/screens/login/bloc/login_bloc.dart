@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:ncm/prefs/pref_manager.dart';
 import 'package:ncm/ui/screens/login/bloc/login_repo.dart';
 import 'package:ncm/util/validator.dart';
@@ -46,6 +47,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   _onSuccessLoginEvent(SuccessLoginEvent event, emit) async {
     emit(const LoadingLoginState());
-    emit(const SuccessLogin());
+    emit(SuccessLogin(event.user));
   }
 }

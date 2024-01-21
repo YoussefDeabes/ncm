@@ -32,4 +32,7 @@ class FailedLoginEvent extends LoginEvent {
   FailedLoginEvent(this.errorMessage);
 }
 
-class SuccessLoginEvent extends LoginEvent {}
+class SuccessLoginEvent extends LoginEvent {
+  User user;
+  SuccessLoginEvent(this.user);
+}

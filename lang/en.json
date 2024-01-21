@@ -65,5 +65,7 @@
   "notAMember": "Not a member",
   "register": "Register",
   "enterEmail": "Kindly, enter your email",
-  "enterPassword": "Kindly, enter your password"
+  "enterPassword": "Kindly, enter your password",
+  "changeLanguage": "Change language",
+  "logout": "Logout"
 }

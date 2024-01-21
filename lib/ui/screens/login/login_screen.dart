@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ncm/_base/widgets/base_stateful_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:ncm/prefs/pref_manager.dart';
 import 'package:ncm/res/assets_path.dart';
 import 'package:ncm/res/const_colors.dart';
 import 'package:ncm/ui/screens/home/home_screen.dart';
@@ -61,17 +62,18 @@ class _LoginScreenState extends BaseState<LoginScreen> {
         if (state is FailedLoginState) {
           showToast(state.errorMessage);
         }
-        if(state is SuccessLogin){
+        if (state is SuccessLogin) {
+          PrefManager.setUsername(state.user.email);
           Navigator.of(context).pushReplacementNamed(HomeScreen.routeName);
         }
         if (state is LoginClickedState) {
           try {
             await auth
                 .signInWithEmailAndPassword(
-                email: _emailController.text,
-                password: _passwordController.text)
-                .then((value) =>
-                _loginBloc.add(SuccessLoginEvent()));
+                    email: _emailController.text,
+                    password: _passwordController.text)
+                .then(
+                    (value) => _loginBloc.add(SuccessLoginEvent(value.user!)));
           } on FirebaseAuthException catch (e) {
             _loginBloc.add(FailedLoginEvent(e.message.toString()));
           }
@@ -125,8 +127,8 @@ class _LoginScreenState extends BaseState<LoginScreen> {
                               color: ConstColors.app),
                         ),
                         SizedBox(height: height / 95),
-                        _getPasswordTextField(label: translate(
-                            LangKeys.password)),
+                        _getPasswordTextField(
+                            label: translate(LangKeys.password)),
                         SizedBox(height: height / 50),
                         _getLoginButton(),
                         SizedBox(height: height / 50),
@@ -235,11 +237,11 @@ class _LoginScreenState extends BaseState<LoginScreen> {
               onPressed: _onLoginPressed,
               style: ButtonStyle(
                   backgroundColor:
-                  MaterialStateProperty.all(ConstColors.secondary)),
+                      MaterialStateProperty.all(ConstColors.secondary)),
               child: Text(
                 translate(LangKeys.login),
-                style: const TextStyle(
-                    fontSize: 20, fontWeight: FontWeight.w600),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               )),
         ));
   }

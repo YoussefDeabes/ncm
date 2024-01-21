@@ -66,4 +66,6 @@ class LangKeys {
   static const register = 'register';
   static const enterEmail = 'enterEmail';
   static const enterPassword = 'enterPassword';
+  static const changeLanguage = 'changeLanguage';
+  static const logout = 'logout';
 }

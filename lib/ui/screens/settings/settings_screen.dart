@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:ncm/res/assets_path.dart';
 import 'package:ncm/res/const_colors.dart';
 import 'package:ncm/ui/screens/login/login_screen.dart';
+import 'package:ncm/ui/widgets/choose_language.dart';
 import 'package:ncm/ui/widgets/widgets.dart';
+import 'package:ncm/util/lang/app_localization_keys.dart';
 
 class SettingsScreen extends BaseStatefulWidget {
   static const String routeName = '/settings-screen';
@@ -17,6 +19,7 @@ class SettingsScreen extends BaseStatefulWidget {
 
 class _SettingsScreenState extends BaseState<SettingsScreen> {
   FirebaseAuth auth = FirebaseAuth.instance;
+
 
   @override
   Widget baseBuild(BuildContext context) {
@@ -42,6 +45,8 @@ class _SettingsScreenState extends BaseState<SettingsScreen> {
           child: ListView(
             children: [
               _headerRow(),
+              ChooseLanguageWidget(
+              ),
               ElevatedButton(
                   onPressed: () {
                     Navigator.of(context).pushNamedAndRemoveUntil(
@@ -51,7 +56,7 @@ class _SettingsScreenState extends BaseState<SettingsScreen> {
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(ConstColors.secondary)),
-                  child: getTextWidget("Logout",
+                  child: getTextWidget(translate(LangKeys.logout),
                       fontWeight: FontWeight.w700, fontSize: 18)),
             ],
           ),
@@ -72,7 +77,6 @@ class _SettingsScreenState extends BaseState<SettingsScreen> {
           children: [
             InkWell(
               onTap: () {
-                // _servicesBloc.add(SearchClickedEvt());
               },
               child: Image.asset(
                 AssPath.search,
@@ -82,7 +86,6 @@ class _SettingsScreenState extends BaseState<SettingsScreen> {
             const SizedBox(width: 20),
             InkWell(
               onTap: () {
-                // _servicesBloc.add(NotificationClickedEvt());
               },
               child: Image.asset(
                 AssPath.notificationIcon,
@@ -98,4 +101,5 @@ class _SettingsScreenState extends BaseState<SettingsScreen> {
 ///////////////////////////////////////////////////////////
 //////////////////// Helper methods ///////////////////////
 ///////////////////////////////////////////////////////////
+
 }

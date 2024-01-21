@@ -57,6 +57,7 @@ dependencies:
   path_provider: ^2.0.15
   country_picker: ^2.0.19
   url_launcher: ^6.1.4
+  intl: ^0.18.1
 
   # async:
   permission_handler: ^11.2.0

@@ -26,4 +26,10 @@ class PrefManager {
     return await PrefUtils.getString(PrefKeys.token);
   }
 
+  static Future<void> setUsername(String? data) async {
+    await PrefUtils.setString(PrefKeys.username, data!);
+  }
+  static Future<String?> getUsername() async {
+    return await PrefUtils.getString(PrefKeys.username);
+  }
 }
