@@ -565,31 +565,31 @@ class _ServicesScreenState extends BaseState<ServicesScreen> {
                   context: context,
                   isDismissible: true,
                   isScrollControlled: true,
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(16),
                         topLeft: Radius.circular(16),
                       )),
                   builder: (context) {
-                    return Container(
+                    return SizedBox(
                       height: height * 0.70,
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                              Text(
                                 translate(LangKeys.termsAndConditions),
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w500,
                                     color: ConstColors.app),
                               ),
-                            SizedBox(height: 20),
-                            Padding(
-                              padding: const EdgeInsets.all(20.0),
+                            const SizedBox(height: 20),
+                            const Padding(
+                              padding: EdgeInsets.all(20.0),
                               child: Text(
                                 ConstValues.terms,
                                 textAlign: TextAlign.justify,
